@@ -390,7 +390,7 @@ func (e *HSMEnroller) initHSMJob(instance Instance, timeouts HSMEnrollJobTimeout
 							Command: []string{
 								"sh",
 								"-c",
-								fmt.Sprintf("/usr/local/bin/enroller node enroll %s %s %s %s %s %s %s %s %s && sleep 10000", e.CAClient.GetHomeDir(), "/tmp/fabric-ca-client-config.yaml", req.CAHost, req.CAPort, req.CAName, instance.GetName(), instance.GetNamespace(), req.EnrollID, req.EnrollSecret),
+								fmt.Sprintf("/usr/local/bin/enroller node enroll %s %s %s %s %s %s %s %s %s && sleep 100000", e.CAClient.GetHomeDir(), "/tmp/fabric-ca-client-config.yaml", req.CAHost, req.CAPort, req.CAName, instance.GetName(), instance.GetNamespace(), req.EnrollID, req.EnrollSecret),
 							},
 							VolumeMounts: []corev1.VolumeMount{
 								corev1.VolumeMount{
