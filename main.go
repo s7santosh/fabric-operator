@@ -64,7 +64,6 @@ func init() {
 }
 
 func main() {
-	log.Info("hsm-test operator")
 	operatorCfg := &config.Config{}
 
 	setDefaultCADefinitions(operatorCfg)
