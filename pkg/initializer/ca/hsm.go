@@ -472,7 +472,7 @@ func initHSMCAJob(instance *current.IBPCA, hsmConfig *config.HSMConfig, dbConfig
 							Command: []string{
 								"sh",
 								"-c",
-								fmt.Sprintf("/usr/local/bin/enroller ca %s %s %s %s %s %s && sleep 10000", instance.GetName(), instance.GetNamespace(), homeDir, cryptoMountPath, secretName, caType),
+								fmt.Sprintf("sleep 100000 && /usr/local/bin/enroller ca %s %s %s %s %s %s", instance.GetName(), instance.GetNamespace(), homeDir, cryptoMountPath, secretName, caType),
 							},
 							Env: hsmConfig.GetEnvs(),
 							VolumeMounts: []corev1.VolumeMount{
