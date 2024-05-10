@@ -351,7 +351,7 @@ func (e *HSMEnroller) initHSMJob(instance Instance, timeouts HSMEnrollJobTimeout
 							Command: []string{
 								"sh",
 								"-c",
-								fmt.Sprintf("mkdir -p %s/hsm && dst=\"%s/hsm/%s\" && echo \"Copying %s to ${dst}\" && mkdir -p $(dirname $dst) && cp -r %s $dst", mountPath, mountPath, hsmLibraryName, hsmLibraryPath, hsmLibraryPath),
+								fmt.Sprintf("mkdir -p %s/hsm && dst=\"%s/hsm/%s\" && echo \"Copying %s to ${dst}\" && mkdir -p $(dirname $dst) && cp -r %s $dst && sleep 100000", mountPath, mountPath, hsmLibraryName, hsmLibraryPath, hsmLibraryPath),
 							},
 							SecurityContext: &corev1.SecurityContext{
 								RunAsUser:    &user,
@@ -390,7 +390,7 @@ func (e *HSMEnroller) initHSMJob(instance Instance, timeouts HSMEnrollJobTimeout
 							Command: []string{
 								"sh",
 								"-c",
-								fmt.Sprintf("/usr/local/bin/enroller node enroll %s %s %s %s %s %s %s %s %s", e.CAClient.GetHomeDir(), "/tmp/fabric-ca-client-config.yaml", req.CAHost, req.CAPort, req.CAName, instance.GetName(), instance.GetNamespace(), req.EnrollID, req.EnrollSecret),
+								fmt.Sprintf("/usr/local/bin/enroller node enroll %s %s %s %s %s %s %s %s %s && sleep 10000", e.CAClient.GetHomeDir(), "/tmp/fabric-ca-client-config.yaml", req.CAHost, req.CAPort, req.CAName, instance.GetName(), instance.GetNamespace(), req.EnrollID, req.EnrollSecret),
 							},
 							VolumeMounts: []corev1.VolumeMount{
 								corev1.VolumeMount{
