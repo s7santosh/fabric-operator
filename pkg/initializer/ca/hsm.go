@@ -431,7 +431,7 @@ func initHSMCAJob(instance *current.IBPCA, hsmConfig *config.HSMConfig, dbConfig
 							Command: []string{
 								"sh",
 								"-c",
-								fmt.Sprintf("mkdir -p %s/hsm && dst=\"%s/hsm/%s\" && echo \"Copying %s to ${dst}\" && mkdir -p $(dirname $dst) && cp -r %s $dst && sleep 10000", mountPath, mountPath, hsmLibraryName, hsmLibraryPath, hsmLibraryPath),
+								fmt.Sprintf("mkdir -p %s/hsm && dst=\"%s/hsm/%s\" && echo \"Copying %s to ${dst}\" && mkdir -p $(dirname $dst) && cp -r %s $dst", mountPath, mountPath, hsmLibraryName, hsmLibraryPath, hsmLibraryPath),
 							},
 							SecurityContext: &corev1.SecurityContext{
 								RunAsUser:    &user,
